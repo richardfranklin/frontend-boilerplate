@@ -1,0 +1,14 @@
+{
+  "name": "front-end-boilerplate",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "https://github.com/designagencyuk/front-end-boilerplate",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
