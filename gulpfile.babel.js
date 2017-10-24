@@ -16,6 +16,17 @@ gulp.task('styles', () => {
 });
 
 // gulp scripts
+gulp.task('scripts', () => 
+    gulp.src([
+        'app/scripts/main.js'
+    ])
+    .pipe(babel({
+        presets: ['env']
+    }))
+    .pipe(gulp.dest('dist/scripts'))
+);
+
+// lint scripts
 
 
 // gulp Serve
