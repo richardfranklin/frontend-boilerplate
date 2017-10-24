@@ -14,6 +14,30 @@ const reload = browserSync.reload;
 const eslint = require('gulp-eslint');
 const babel = require('gulp-babel');
 
+// handlebars
+const handlebars = require('gulp-compile-handlebars');
+const rename = require('gulp-rename');
+
+// handlebars cmpile
+gulp.task('templating', () => {
+    const options = {
+        ignorePartials: true,
+        batch : ['app/partials'],
+        helpers : {
+            capitals : function(str){
+                return str.toUpperCase();
+            }
+        }
+    }
+ 
+    return gulp.src('./app/**/*.html')
+        .pipe(handlebars(null, options))
+        .pipe(rename(path => {
+            path.extname = '.html';
+        }))
+        .pipe(gulp.dest('dist'));
+});
+
 // Scan HTML files, optimise and copy
 gulp.task('html', () => {
     return gulp.src('app/**/*.html')
@@ -55,7 +79,7 @@ gulp.task('scripts', () =>
 );
 
 // gulp Serve
-gulp.task('serve', ['styles', 'html'], () => {
+gulp.task('serve', ['styles', 'scripts', 'templating'], () => {
 
     browserSync({
         notify: false,
@@ -71,7 +95,8 @@ gulp.task('serve', ['styles', 'html'], () => {
         port: 3000
     });
 
-    gulp.watch(['app/*.html'], ['html', reload]);
+    gulp.watch(['app/**/*.html'], ['templating', reload]);
+    gulp.watch(['app/partials/*.{html,hbs}'], ['templating', reload]);
     gulp.watch(['app/sass/**/*.{scss,css}'], ['styles', reload]);
     gulp.watch(['app/scripts/**/*.js'], ['lint', 'scripts', reload]);
     gulp.watch(['app/images/**/*'], reload);
