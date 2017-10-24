@@ -1,11 +1,38 @@
 'use strict';
 
 import sass from 'gulp-sass';
+import path from 'path';
 import gulp from 'gulp';
+import runSequence from 'run-sequence';
 import autoprefixer from 'gulp-autoprefixer';
 import browserSync from 'browser-sync';
+import gulpLoadPlugins from 'gulp-load-plugins';
+import pkg from './package.json';
+// import gulpEslint from 'gulp-eslint';
 
+const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
+const eslint = require('gulp-eslint');
+
+// Scan HTML files, optimise and copy
+gulp.task('html', () => {
+    return gulp.src('app/**/*.html')
+  
+      // Minify any HTML
+      .pipe($.htmlmin({
+        removeComments: true,
+        collapseWhitespace: true,
+        collapseBooleanAttributes: true,
+        removeAttributeQuotes: true,
+        removeRedundantAttributes: true,
+        removeEmptyAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        removeOptionalTags: true
+      }))
+      // Output files
+      .pipe(gulp.dest('dist'));
+  });
 
 // gulp styles
 gulp.task('styles', () => {
@@ -15,22 +42,25 @@ gulp.task('styles', () => {
         .pipe(gulp.dest('dist/styles'));
 });
 
+// lint scripts
+gulp.task('lint', () => {
+    gulp.src(['app/scripts/**/*.js','!node_modules/**'])
+        .pipe(eslint())
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
+});
+
 // gulp scripts
 gulp.task('scripts', () => 
     gulp.src([
         'app/scripts/main.js'
     ])
-    .pipe(babel({
-        presets: ['env']
-    }))
     .pipe(gulp.dest('dist/scripts'))
+
 );
 
-// lint scripts
-
-
 // gulp Serve
-gulp.task('serve', ['styles'], () => {
+gulp.task('serve', ['styles', 'html'], () => {
 
     browserSync({
         notify: false,
@@ -42,10 +72,12 @@ gulp.task('serve', ['styles'], () => {
         // Note: this uses an unsigned certificate which on first access
         //       will present a certificate warning in the browser.
         // https: true,
-        server: ['app'],
+        server: ['dist'],
         port: 3000
-      });
+    });
 
+    gulp.watch(['app/*.html'], reload);
     gulp.watch(['app/sass/**/*.{scss,css}'], ['styles', reload]);
-
+    gulp.watch(['app/scripts/**/*.js'], ['lint', 'scripts', reload]);
+    gulp.watch(['app/images/**/*'], reload);
 });
