@@ -8,7 +8,6 @@ import autoprefixer from 'gulp-autoprefixer';
 import browserSync from 'browser-sync';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import pkg from './package.json';
-// import gulpEslint from 'gulp-eslint';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
