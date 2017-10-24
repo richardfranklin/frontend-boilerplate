@@ -13,6 +13,7 @@ import pkg from './package.json';
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 const eslint = require('gulp-eslint');
+const babel = require('gulp-babel');
 
 // Scan HTML files, optimise and copy
 gulp.task('html', () => {
@@ -20,15 +21,7 @@ gulp.task('html', () => {
   
       // Minify any HTML
       .pipe($.htmlmin({
-        removeComments: true,
-        collapseWhitespace: true,
-        collapseBooleanAttributes: true,
-        removeAttributeQuotes: true,
-        removeRedundantAttributes: true,
-        removeEmptyAttributes: true,
-        removeScriptTypeAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        removeOptionalTags: true
+        removeComments: true
       }))
       // Output files
       .pipe(gulp.dest('dist'));
@@ -55,8 +48,11 @@ gulp.task('scripts', () =>
     gulp.src([
         'app/scripts/main.js'
     ])
+    // Babel
+    .pipe(babel({
+        presets: ["env"]
+    }))
     .pipe(gulp.dest('dist/scripts'))
-
 );
 
 // gulp Serve
@@ -76,7 +72,7 @@ gulp.task('serve', ['styles', 'html'], () => {
         port: 3000
     });
 
-    gulp.watch(['app/*.html'], reload);
+    gulp.watch(['app/*.html'], ['html', reload]);
     gulp.watch(['app/sass/**/*.{scss,css}'], ['styles', reload]);
     gulp.watch(['app/scripts/**/*.js'], ['lint', 'scripts', reload]);
     gulp.watch(['app/images/**/*'], reload);
