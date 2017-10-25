@@ -80,7 +80,7 @@ gulp.task('scripts', () =>
 );
 
 // gulp modernizr
-gulp.task('modernizr', function() {
+gulp.task('modernizr', () => {
     return gulp.src([
         '!app/scripts/modernizr.js',
         'app/scripts/main.js',
@@ -98,8 +98,19 @@ gulp.task('modernizr', function() {
     .pipe(gulp.dest("dist/scripts"));
   });
 
+// build initial template listing page
+gulp.task('directory', () => {
+    var fs = require('fs');
+    var files = fs.readdirSync('app/templates');
+
+    gulp.src('app/directory.hbs')
+        .pipe(handlebars(files))
+        .pipe(rename('directory.html'))
+        .pipe(gulp.dest('dist'));
+});
+
 // gulp Serve
-gulp.task('serve', ['styles', 'scripts', 'templating'], () => {
+gulp.task('serve', ['directory', 'styles', 'scripts', 'templating'], () => {
 
     browserSync({
         notify: false,
@@ -111,7 +122,10 @@ gulp.task('serve', ['styles', 'scripts', 'templating'], () => {
         // Note: this uses an unsigned certificate which on first access
         //       will present a certificate warning in the browser.
         // https: true,
-        server: ['dist'],
+        server: {
+            baseDir: "dist",
+            index: "directory.html"            
+        },
         port: 3000
     });
 
