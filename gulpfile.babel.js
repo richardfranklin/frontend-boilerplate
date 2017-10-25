@@ -15,7 +15,9 @@ const eslint = require('gulp-eslint');
 const babel = require('gulp-babel');
 const modernizr = require('gulp-modernizr');
 
-// handlebars
+/* =============================================================
+    Handlebars
+============================================================= */
 const handlebars = require('gulp-compile-handlebars');
 const rename = require('gulp-rename');
 
@@ -39,7 +41,9 @@ gulp.task('templating', () => {
         .pipe(gulp.dest('dist'));
 });
 
-// Scan HTML files, optimise and copy
+/* =============================================================
+    Scan HTML files, optimise and copy
+============================================================= */
 gulp.task('html', () => {
     return gulp.src('app/**/*.html')
   
@@ -51,7 +55,9 @@ gulp.task('html', () => {
       .pipe(gulp.dest('dist'));
   });
 
-// gulp styles
+/* =============================================================
+    Styles
+============================================================= */
 gulp.task('styles', () => {
     return gulp.src('app/sass/**/*.scss')
         .pipe(sass.sync().on('error', sass.logError))
@@ -59,7 +65,9 @@ gulp.task('styles', () => {
         .pipe(gulp.dest('dist/styles'));
 });
 
-// lint scripts
+/* =============================================================
+    Lint scripts
+============================================================= */
 gulp.task('lint', () => {
     gulp.src(['app/scripts/**/*.js','!node_modules/**'])
         .pipe(eslint())
@@ -67,7 +75,9 @@ gulp.task('lint', () => {
         .pipe(eslint.failAfterError());
 });
 
-// gulp scripts
+/* =============================================================
+    Scripts
+============================================================= */
 gulp.task('scripts', () => 
     gulp.src([
         'app/scripts/main.js'
@@ -79,7 +89,9 @@ gulp.task('scripts', () =>
     .pipe(gulp.dest('dist/scripts'))
 );
 
-// gulp modernizr
+/* =============================================================
+    Modernizr
+============================================================= */
 gulp.task('modernizr', () => {
     return gulp.src([
         '!app/scripts/modernizr.js',
@@ -98,7 +110,9 @@ gulp.task('modernizr', () => {
     .pipe(gulp.dest("dist/scripts"));
   });
 
-// build initial template listing page
+/* =============================================================
+    build initial template listing page
+============================================================= */
 gulp.task('directory', () => {
     var fs = require('fs');
     var files = fs.readdirSync('app/templates');
@@ -109,7 +123,9 @@ gulp.task('directory', () => {
         .pipe(gulp.dest('dist'));
 });
 
-// gulp Serve
+/* =============================================================
+    Serve
+============================================================= */
 gulp.task('serve', ['directory', 'styles', 'scripts', 'templating'], () => {
 
     browserSync({
