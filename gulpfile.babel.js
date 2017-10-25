@@ -13,6 +13,7 @@ const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 const eslint = require('gulp-eslint');
 const babel = require('gulp-babel');
+const modernizr = require('gulp-modernizr');
 
 // handlebars
 const handlebars = require('gulp-compile-handlebars');
@@ -78,6 +79,25 @@ gulp.task('scripts', () =>
     .pipe(gulp.dest('dist/scripts'))
 );
 
+// gulp modernizr
+gulp.task('modernizr', function() {
+    return gulp.src([
+        '!app/scripts/modernizr.js',
+        'app/scripts/main.js',
+        'app/sass/**/*.scss'
+    ])
+    .pipe(modernizr({
+        options: [],
+        "files" : {
+            "src": [
+                "app/scripts/main.js",
+                "styles/**/*.scss"
+            ]
+        },
+    }))
+    .pipe(gulp.dest("dist/scripts"));
+  });
+
 // gulp Serve
 gulp.task('serve', ['styles', 'scripts', 'templating'], () => {
 
@@ -97,7 +117,8 @@ gulp.task('serve', ['styles', 'scripts', 'templating'], () => {
 
     gulp.watch(['app/**/*.html'], ['templating', reload]);
     gulp.watch(['app/partials/*.{html,hbs}'], ['templating', reload]);
-    gulp.watch(['app/sass/**/*.{scss,css}'], ['styles', reload]);
-    gulp.watch(['app/scripts/**/*.js'], ['lint', 'scripts', reload]);
+    gulp.watch(['app/sass/**/*.{scss,css}'], ['styles', 'modernizr', reload]);
+    // gulp.watch(['app/scripts/**/*.js'], ['modernizr', reload]);
+    gulp.watch(['app/scripts/**/*.js'], ['lint', 'scripts', 'modernizr', reload]);
     gulp.watch(['app/images/**/*'], reload);
 });
