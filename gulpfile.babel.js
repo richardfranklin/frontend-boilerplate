@@ -21,7 +21,7 @@ const modernizr = require('gulp-modernizr');
 ============================================================= */
 
 gulp.task('clean', () => {
-    del(['dist/*',], {dot: true});
+    del(['dist/**/*',]);
 });
 
 /* =============================================================
@@ -78,7 +78,7 @@ gulp.task('styles', () => {
 });
 
 /* =============================================================
-    Styles
+    Directory Styles
 ============================================================= */
 gulp.task('directory-styles', () => {
     return gulp.src('app/sass/directory.scss')
@@ -151,8 +151,13 @@ gulp.task('directory', () => {
 ============================================================= */
 gulp.task('default', ['clean'], cb =>
     runSequence(
-        ['directory', 'directory-styles', 'styles', 'scripts', 'templating'],
-        cb
+        'clean',
+        'templating',
+        'directory',
+        'directory-styles',
+        'styles',
+        'scripts',
+        cby
     )
 );
 
