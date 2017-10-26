@@ -157,7 +157,7 @@ gulp.task('default', ['clean'], cb =>
         'directory-styles',
         'styles',
         'scripts',
-        cby
+        cb
     )
 );
 
