@@ -1,0 +1,26 @@
+@import 'utility/css-reset';
+
+.directory-list {
+    font-family: sans-serif;
+    margin: 0 auto;
+    max-width: 500px;
+    padding:10px 20px;
+    box-shadow: 0px 2px 30px 0px rgba(0, 0, 0, .1);
+    margin-top: 40px;
+
+    li {
+        border-bottom: 1px solid darken(#ffffff, 5%);
+        &:last-child {
+            border-bottom: 0;
+        }
+        a {
+            padding: 12px 10px;
+            text-decoration: none;
+            color:lighten(#000000, 40%);
+            display: block;
+            &:hover {
+                color: #000000;
+            }
+        }
+    }
+}
