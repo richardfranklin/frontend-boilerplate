@@ -33,7 +33,7 @@ gulp.task('templating', () => {
         }
     }
  
-    return gulp.src('./app/**/*.html')
+    return gulp.src('./app/**/*.{html, hbs}')
         .pipe(handlebars(null, options))
         .pipe(rename(path => {
             path.extname = '.html';
@@ -59,7 +59,20 @@ gulp.task('html', () => {
     Styles
 ============================================================= */
 gulp.task('styles', () => {
-    return gulp.src('app/sass/**/*.scss')
+    return gulp.src([
+            'app/sass/**/*.scss',
+            '!app/sass/directory.scss'
+        ])
+        .pipe(sass.sync().on('error', sass.logError))
+        .pipe(autoprefixer('last 2 versions'))
+        .pipe(gulp.dest('dist/styles'));
+});
+
+/* =============================================================
+    Styles
+============================================================= */
+gulp.task('directory-styles', () => {
+    return gulp.src('app/sass/directory.scss')
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(autoprefixer('last 2 versions'))
         .pipe(gulp.dest('dist/styles'));
@@ -126,7 +139,7 @@ gulp.task('directory', () => {
 /* =============================================================
     Serve
 ============================================================= */
-gulp.task('serve', ['directory', 'styles', 'scripts', 'templating'], () => {
+gulp.task('serve', ['directory', 'directory-styles', 'styles', 'scripts', 'templating'], () => {
 
     browserSync({
         notify: false,
@@ -145,10 +158,13 @@ gulp.task('serve', ['directory', 'styles', 'scripts', 'templating'], () => {
         port: 3000
     });
 
+    // Directory modification
+    gulp.watch(['app/directory.hbs'], ['directory', reload]);
+    gulp.watch(['app/sass/directory.scss'], ['directory-styles', reload]);
+
     gulp.watch(['app/**/*.html'], ['templating', reload]);
-    gulp.watch(['app/partials/*.{html,hbs}'], ['templating', reload]);
+    gulp.watch(['app/partials/*.{html,hbs}'], ['templating', 'directory', reload]);
     gulp.watch(['app/sass/**/*.{scss,css}'], ['styles', 'modernizr', reload]);
-    // gulp.watch(['app/scripts/**/*.js'], ['modernizr', reload]);
     gulp.watch(['app/scripts/**/*.js'], ['lint', 'scripts', 'modernizr', reload]);
     gulp.watch(['app/images/**/*'], reload);
 });
