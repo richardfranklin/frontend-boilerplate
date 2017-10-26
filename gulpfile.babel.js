@@ -3,6 +3,7 @@
 import sass from 'gulp-sass';
 import path from 'path';
 import gulp from 'gulp';
+import del from 'del';
 import runSequence from 'run-sequence';
 import autoprefixer from 'gulp-autoprefixer';
 import browserSync from 'browser-sync';
@@ -14,6 +15,14 @@ const reload = browserSync.reload;
 const eslint = require('gulp-eslint');
 const babel = require('gulp-babel');
 const modernizr = require('gulp-modernizr');
+
+/* =============================================================
+    Clean distribution folder
+============================================================= */
+
+gulp.task('clean', () => {
+    del(['dist/*',], {dot: true});
+});
 
 /* =============================================================
     Handlebars
@@ -136,10 +145,21 @@ gulp.task('directory', () => {
         .pipe(gulp.dest('dist'));
 });
 
+
+/* =============================================================
+    Serve default task
+============================================================= */
+gulp.task('default', ['clean'], cb =>
+    runSequence(
+        ['directory', 'directory-styles', 'styles', 'scripts', 'templating'],
+        cb
+    )
+);
+
 /* =============================================================
     Serve
 ============================================================= */
-gulp.task('serve', ['directory', 'directory-styles', 'styles', 'scripts', 'templating'], () => {
+gulp.task('serve', ['default'], () => {
 
     browserSync({
         notify: false,
