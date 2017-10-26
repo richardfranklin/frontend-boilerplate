@@ -177,8 +177,9 @@ gulp.task('serve', ['default'], () => {
         },
         port: 3000
     });
-
+    
     // Directory modification
+    gulp.watch(['app/templates/*.{html, hbs}'], ['directory', reload]);
     gulp.watch(['app/directory.hbs'], ['directory', reload]);
     gulp.watch(['app/sass/directory.scss'], ['directory-styles', reload]);
 
