@@ -5,7 +5,7 @@ import path from 'path';
 import gulp from 'gulp';
 import del from 'del';
 import runSequence from 'run-sequence';
-import autoprefixer from 'gulp-autoprefixer';
+import autoprefixer from 'autoprefixer';
 import browserSync from 'browser-sync';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import pkg from './package.json';
@@ -15,6 +15,9 @@ const reload = browserSync.reload;
 const eslint = require('gulp-eslint');
 const babel = require('gulp-babel');
 const modernizr = require('gulp-modernizr');
+const lost = require('lost');
+const postcss = require('gulp-postcss');
+
 
 /* =============================================================
     Clean distribution folder
@@ -69,11 +72,16 @@ gulp.task('html', () => {
 ============================================================= */
 gulp.task('styles', () => {
     return gulp.src([
-            'app/sass/**/*.scss',
+            'app/sass/*.{scss,css}',
             '!app/sass/directory.scss'
         ])
         .pipe(sass.sync().on('error', sass.logError))
-        .pipe(autoprefixer('last 2 versions'))
+        .pipe(postcss([
+            lost(),
+            autoprefixer()
+        ]))
+        // .pipe(lost())
+        // .pipe(autoprefixer('last 2 versions'))
         .pipe(gulp.dest('dist/styles'));
 });
 
@@ -83,7 +91,10 @@ gulp.task('styles', () => {
 gulp.task('directory-styles', () => {
     return gulp.src('app/sass/directory.scss')
         .pipe(sass.sync().on('error', sass.logError))
-        .pipe(autoprefixer('last 2 versions'))
+        .pipe(postcss([
+            lost(),
+            autoprefixer()
+        ]))
         .pipe(gulp.dest('dist/styles'));
 });
 
