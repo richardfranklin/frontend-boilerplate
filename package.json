@@ -31,5 +31,7 @@
       "type": "git",
       "url": "https://github.com/designagencyuk/frontend-starterkit.git"
    },
-   "dependencies": {}
+   "dependencies": {
+      "gulp": "^3.9.1"
+   }
 }
