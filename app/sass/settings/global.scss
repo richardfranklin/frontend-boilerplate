@@ -1,0 +1,121 @@
+/* ===========================================================
+
+	# Variables
+
+=========================================================== */
+
+$old-ie: 					false!default;
+// $base-dir: 					'/assets';
+// $fonts: 					'#{$base-dir}/fonts';
+// $images: 					'#{$base-dir}/img';
+
+
+/* ===========================================================
+
+	# BASE COLOURS
+
+=========================================================== */
+
+$black:                     #1a171b;
+$white:                     #ffffff;
+
+// Custom colours here
+// $light-1: #e8e8e8
+
+$facebook:                  #3b5998;
+$twitter:                   #55acee;
+$google:                    #dc4e41;
+$instagram:                 #3f729b;
+$linkedin:                  #0077b5;
+$pinterest:                 #bd081c;
+$youtube:                   #cd201f;
+$vimeo:                     #1ab7ea;
+$flickr:                    #0063dc;
+
+
+/* ===========================================================
+
+    # OVERRIDES
+
+=========================================================== */
+
+
+
+/* ===========================================================
+
+	# Base values
+
+=========================================================== */
+
+$font-family:				"Montserrat", Helvetica, Arial, Geneva, sans-serif;
+$font-family-sec:			'Times New Roman', Times, serif;
+$font-size-small:			1.6rem;
+$font-size-large:			1.6rem;
+$line-height:				1.5em;
+$type-scale-small:			1.125;
+$type-scale-medium:			1.150;
+$type-scale-large:			1.18;
+
+$heading-colour:			$black;
+$text-colour:				$black;
+$light-text-colour:         #6a686b;
+$light-text-colour-2:		#9d9ca0;
+$background-colour:			$white;
+$border-colour:				$light-2;
+$border-style:              .4rem solid $pri;
+$link-colour:				$pri;
+$link-colour-hover:			darken($pri, 10);
+$form-placeholder-colour:	£dark-1;
+$placeholder-colour:		$light-1;
+$highlight-colour:			lighten( $pri, 20 );
+
+$error:						$red;
+$success:					$green;
+$warn:                      $orange;
+$disabled:					$light-1;
+
+// section padding
+$padding-small:				4rem;
+$padding-medium:			6rem;
+$padding-large:				8rem;
+
+// mobile nav padding
+$mob-nav-padding:           1.2rem 6rem 1.2rem 1.2rem;
+
+$border-width: 				.2rem;
+$default-border-radius: 	0;
+$border-radius:             .4rem;
+$speed: 					.3s;
+$ease:						ease;
+
+$light:						300;
+$regular:					500;
+$bold:						700;
+
+$wrap-small:				75rem;
+$wrap-medium:				98rem;
+$wrap-large:				120rem;
+$wrap-x-large:				140rem;
+
+
+/* ===========================================================
+
+	# Media queries
+
+=========================================================== */
+
+$mq-x-small:                550px;
+$mq-small:	 				600px;
+$mq-medium: 				800px;
+$mq-large: 					1100px;
+$mq-x-large: 				1280px;
+$mq-xx-large: 				1500px;
+$mq-xxx-large:               1700px;
+
+/* ===========================================================
+
+	# Grid settings
+
+=========================================================== */
+
+
