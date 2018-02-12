@@ -1,0 +1,64 @@
+/* ===========================================================
+
+  # Tables
+
+=========================================================== */
+
+.o-table--scroll {
+	overflow-y: hidden;
+	overflow-x: auto;
+	position: relative;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+	-webkit-overflow-scrolling: touch;
+}
+
+
+@include respond-max($mq-medium) {
+
+	.o-table--stacked {
+		thead {
+			display: none;
+		}
+
+		td {
+			display: block;
+
+			&:before {
+				content: attr(data-label) ': ';
+				display: block;
+				width: 100%;
+			}
+		}
+
+		tr:nth-child( odd ) td {
+			&:first-child {
+				border-radius: $default-border-radius $default-border-radius 0 0;
+			}
+
+			&:last-child {
+				border-radius: 0 0 $default-border-radius $default-border-radius;
+			}
+		}
+	}
+
+}
+
+
+@include respond-min($mq-medium) {
+
+	.o-table {
+		width: 100% !important;
+
+		padding: 3rem 0;
+
+		table {
+			width: 100% !important;
+			table-layout: fixed;
+
+			td {
+				width: auto !important;
+			}
+		}
+	}
+
+}

@@ -1,0 +1,243 @@
+/* ===========================================================
+
+	# Headings
+
+=========================================================== */
+
+$zeta-small: 		$font-size-small;
+$epsilon-small: 	$zeta-small			*	$type-scale-small;
+$delta-small: 		$epsilon-small		*	$type-scale-small;
+$gamma-small: 		$delta-small		*	$type-scale-small;
+$beta-small: 		$gamma-small		*	$type-scale-small;
+$alpha-small: 		$beta-small			*	$type-scale-small;
+$mega-small:		$alpha-small		*	$type-scale-small;
+$giga-small:		$mega-small			*	$type-scale-small;
+$tera-small: 		$giga-small			*	$type-scale-small;
+$intro-small: 		$epsilon-small;
+
+$zeta-medium: 		$font-size-large;
+$epsilon-medium: 	$zeta-medium		*	$type-scale-medium;
+$delta-medium: 		$epsilon-medium		*	$type-scale-medium;
+$gamma-medium: 		$delta-medium		*	$type-scale-medium;
+$beta-medium: 		$gamma-medium		*	$type-scale-medium;
+$alpha-medium: 		$beta-medium		*	$type-scale-medium;
+$mega-medium:		$alpha-medium		*	$type-scale-medium;
+$giga-medium:		$mega-medium		*	$type-scale-medium;
+$tera-medium: 		$giga-medium		*	$type-scale-medium;
+$intro-medium: 		$epsilon-medium;
+
+$zeta-large: 		$font-size-large;
+$epsilon-large: 	$zeta-large			*	$type-scale-large;
+$delta-large: 		$epsilon-large		*	$type-scale-large;
+$gamma-large: 		$delta-large		*	$type-scale-large;
+$beta-large: 		$gamma-large		*	$type-scale-large;
+$alpha-large: 		$beta-large			*	$type-scale-large;
+$mega-large:		$alpha-large		*	$type-scale-large;
+$giga-large:		$mega-large			*	$type-scale-large;
+$tera-large: 		$giga-large			*	$type-scale-large;
+$intro-large: 		$epsilon-large;
+
+
+h1,
+h2,
+h3,
+h4 {
+	color: $heading-colour;
+	font-weight: $light;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.u-tera,
+.u-giga,
+.u-mega,
+.u-alpha,
+.u-beta,
+.u-gamma {
+	line-height: 1.3;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	a {
+		color: inherit;
+		font-weight: inherit;
+	}
+}
+
+.u-tera {
+	@include heading-font-size( $tera-small );
+}
+
+.u-giga {
+	@include heading-font-size( $giga-small );
+}
+
+.u-mega {
+	@include heading-font-size( $mega-small );
+}
+
+h1,
+.u-alpha {
+	@include heading-font-size( $alpha-small );
+}
+
+.u-beta {
+	@include heading-font-size( $beta-small );
+}
+
+h2,
+.u-gamma {
+	@include heading-font-size( $gamma-small );
+}
+
+.u-delta {
+	@include heading-font-size( $delta-small );
+}
+
+h3,
+.u-epsilon {
+	@include heading-font-size( $epsilon-small );
+}
+
+h4,
+.u-zeta {
+	@include heading-font-size( $zeta-small );
+}
+
+.u-intro {
+	font-size: $intro-small;
+	line-height: 1.4;
+}
+
+caption,
+figcaption {
+	font-size: $font-size-small / $type-scale-small;
+}
+
+@include respond-min-max( $mq-small, $mq-medium ) {
+	.u-tera {
+		@include heading-font-size( $tera-medium );
+	}
+
+	.u-giga {
+		@include heading-font-size( $giga-medium );
+	}
+
+	.u-mega {
+		@include heading-font-size( $mega-medium );
+	}
+
+	h1,
+	.u-alpha {
+		@include heading-font-size( $alpha-medium );
+	}
+
+	.u-beta {
+		@include heading-font-size( $beta-medium );
+	}
+
+	h2,
+	.u-gamma {
+		@include heading-font-size( $gamma-medium );
+	}
+
+	.u-delta {
+		@include heading-font-size( $delta-medium );
+	}
+
+	h3,
+	.u-epsilon {
+		@include heading-font-size( $epsilon-medium );
+	}
+
+	h4,
+	.u-zeta {
+		@include heading-font-size( $zeta-medium );
+	}
+
+	.u-intro {
+		font-size: $intro-medium;
+	}
+
+	caption,
+	figcaption {
+		font-size: $font-size-large / $type-scale-medium;
+	}
+}
+
+@include respond-min( $mq-medium ) {
+	.u-tera {
+		@include heading-font-size( $tera-large );
+	}
+
+	.u-giga {
+		@include heading-font-size( $giga-large );
+	}
+
+	.u-mega {
+		@include heading-font-size( $mega-large );
+	}
+
+	h1 {
+		font-size: 3.6rem;
+	}
+
+	.u-alpha {
+		@include heading-font-size( $alpha-large );
+	}
+
+	.u-beta {
+		@include heading-font-size( $beta-large );
+	}
+
+	h2 {
+		font-size: 3rem;
+	}
+
+	.u-gamma {
+		@include heading-font-size( $gamma-large );
+	}
+
+	.u-delta {
+		@include heading-font-size( $delta-large );
+	}
+
+	h3 {
+		font-size: 2.4rem;
+	}
+
+	.u-epsilon {
+		@include heading-font-size( $epsilon-large );
+	}
+
+	h4 {
+		font-size: 2rem;
+	}
+
+	h5 {
+		font-size: 1.4rem;
+		font-weight: bolder;
+	}
+
+	.u-zeta {
+		@include heading-font-size( $zeta-large );
+	}
+
+	.u-intro {
+		font-size: $intro-large;
+	}
+
+	caption,
+	figcaption {
+		font-size: $font-size-large / $type-scale-large;
+	}
+}

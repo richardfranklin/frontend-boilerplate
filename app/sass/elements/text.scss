@@ -1,0 +1,145 @@
+/* ===========================================================
+
+	# Text
+
+=========================================================== */
+
+html {
+	font-size: 62.5%;
+}
+
+body,
+input,
+textarea,
+select,
+button {
+	color: $text-colour;
+	font-family: $font-family;
+	font-size: $font-size-small;
+	font-feature-settings: 'liga', 'kern'; // http://elliotjaystocks.com/blog/kerning/
+	font-kerning: normal;
+	line-height: $line-height;
+
+	text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+p {
+	font-size:1.55rem;
+}
+
+p + .c-button,
+p + p,
+p + ul,
+p + ol,
+ul + p,
+ol + p {
+	margin-top: $line-height; // Preserves verticle rythm being equal to line-height
+}
+
+p + h1,
+p + h2,
+p + h3,
+p + h4,
+p + h5,
+p + h6,
+ul + h1,
+ul + h2,
+ul + h3,
+ul + h4,
+ul + h5,
+ul + h6,
+ol + h1,
+ol + h2,
+ol + h3,
+ol + h4,
+ol + h5,
+ol + h6 {
+	padding-top: $line-height;
+}
+
+em {
+	font-style: italic;
+}
+
+small,
+.u-small {
+	font-size: $font-size-small	/ $type-scale-small;
+}
+
+sup, sub {
+  vertical-align: baseline;
+  position: relative;
+  top: -0.4rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	sup, sub {
+		top: -1rem;
+	}
+
+	sub {
+	  top: 1rem;
+	}
+}
+
+
+sub {
+  top: 0.4rem;
+}
+
+@include respond-min-max( $mq-small, $mq-medium ) {
+
+	small,
+	.u-small {
+		font-size: $font-size-large / $type-scale-medium;
+	}
+
+}
+
+@include respond-min( $mq-medium ) {
+
+	small,
+	.u-small {
+		font-size: $font-size-large / $type-scale-large;
+	}
+
+}
+
+::selection {
+	background: $highlight-colour;
+	color: $white;
+}
+
+hr {
+    height: 1px;
+    border: none;
+    color: $border-colour;
+    background-color: $border-colour;
+}
+
+@include respond-min( $mq-medium ) {
+
+	body,
+	input,
+	textarea,
+	select,
+	button {
+		font-size: $font-size-large;
+	}
+
+}
+
+@include hi-res() {
+
+	p {
+		letter-spacing: 0.01em; // Increase letter-spacing on high pixel density screens as they can appear too close
+		word-spacing: 0.01em; // Word-spacing same as letter-spacing for consistency
+	}
+
+}

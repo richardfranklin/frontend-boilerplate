@@ -1,0 +1,28 @@
+/* ===========================================================
+
+	# Anchor
+
+=========================================================== */
+
+a {
+	color: $link-colour;
+	transition: color $speed $ease;
+    font-weight: 500;
+
+	&:hover,
+	&:focus {
+		color: $link-colour-hover;
+	}
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: inherit;
+    }
+	&.no-weight {
+		font-weight: inherit;
+	}
+}

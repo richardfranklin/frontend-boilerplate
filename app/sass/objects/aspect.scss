@@ -1,0 +1,96 @@
+/* ===========================================================
+
+	# Aspect ratios
+
+=========================================================== */
+
+.o-aspect--1-1,
+.o-aspect--5-4,
+.o-aspect--4-3,
+.o-aspect--3-2,
+.o-aspect--3-1,
+.o-aspect--16-9,
+.o-aspect--21-9,
+.o-aspect--30-35 {
+	position: relative;
+
+	&:before {
+		content: "";
+		display: block;
+		background-color: $placeholder-colour;
+	}
+
+	img {
+		width: 100%;
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+	}
+
+}
+
+
+.o-aspect--1-1 {
+
+	&:before {
+		@include pad-top(10,10);
+	}
+
+}
+
+.o-aspect--4-3 {
+
+	&:before {
+		@include pad-top(40,30);
+	}
+
+}
+
+.o-aspect--3-2 {
+
+	&:before {
+		@include pad-top(30,20);
+	}
+
+}
+
+.o-aspect--3-1 {
+
+	&:before {
+		@include pad-top(30,10);
+	}
+
+}
+
+.o-aspect--16-9 {
+
+	&:before {
+		@include pad-top(16,9);
+	}
+
+}
+
+.o-aspect--21-9 {
+
+	&:before {
+		@include pad-top(21,9);
+	}
+
+}
+
+.o-aspect--30-35 {
+
+	&:before {
+		@include pad-top(30,35);
+	}
+
+}
+
+.o-aspect--5-4 {
+
+	&:before {
+		@include pad-top(50,40);
+	}
+
+}

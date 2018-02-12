@@ -1,0 +1,46 @@
+/* ===========================================================
+
+  # Hide
+
+=========================================================== */
+
+@include respond-max( $mq-small ) {
+
+	.u-hide--small {
+		display: none !important;
+	}
+
+}
+
+@include respond-min-max( $mq-small, $mq-medium ) {
+
+	.u-hide--medium {
+		display: none !important;
+	}
+
+}
+
+@include respond-min-max( $mq-medium, $mq-large ) {
+
+	.u-hide--large {
+		display: none !important;
+	}
+
+}
+
+@include respond-min-max( $mq-large, $mq-x-large ) {
+
+	.u-hide--x-large {
+		display: none !important;
+	}
+
+}
+
+
+@include respond-min( $mq-x-large ) {
+
+	.u-hide--xx-large {
+		display: none !important;
+	}
+
+}

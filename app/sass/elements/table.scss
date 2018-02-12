@@ -1,0 +1,118 @@
+/* ===========================================================
+    # Table
+=========================================================== */
+
+table {
+    border: .1rem solid $dark-1;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    padding: .7rem .5rem;
+    text-align: left;
+    word-wrap: break-word;
+}
+
+thead {
+    tr {
+        color: $white;
+        background-color: $pri;
+        font-weight: 500;
+        font-size: 1.6rem;
+        transition: background $speed $ease;
+
+        &:hover {
+            background-color: darken($pri, 5);
+        }
+    }
+
+    td {
+        + td {
+            border-left: .1rem solid $dark-1;
+        }
+    }
+}
+
+tbody {
+    tr {
+        font-size: 1.5rem;
+        transition: background $speed $ease;
+        border-top: .1rem solid $dark-1;
+
+        &:hover {
+            background-color: $light-2;
+        }
+
+        &:nth-child(even) {
+            background-color: $light-1;
+
+            &:hover {
+                background-color: $light-2;
+            }
+        }
+    }
+
+    td {
+        + td {
+            border-left: .1rem solid $dark-1;
+        }
+    }
+
+    p {
+        font-size: 1.5rem;
+    }
+}
+
+
+@include respond-max($mq-small) {
+
+    th,
+    td {
+        padding: .5rem .3rem;
+        text-align: left;
+    }
+
+    thead {
+        tr {
+            font-size: 1.4rem;
+        }
+    }
+
+    tbody {
+        tr {
+            font-size: 1.3rem;
+        }
+
+        p {
+            font-size: 1.3rem;
+        }
+    }
+
+}
+
+@include respond-min-max($mq-small, $mq-medium) {
+
+    th,
+    td {
+        padding: .6rem .4rem;
+        text-align: left;
+    }
+
+    thead {
+        tr {
+            font-size: 1.5rem;
+        }
+    }
+
+    tbody {
+        tr {
+            font-size: 1.4rem;
+        }
+        p {
+            font-size: 1.4rem;
+        }
+    }
+
+}

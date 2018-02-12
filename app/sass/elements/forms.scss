@@ -1,0 +1,84 @@
+/* ===========================================================
+
+	# Forms
+
+=========================================================== */
+
+input:not(.c-button),
+select,
+textarea {
+	background: $light-1;
+	border: $border-width solid $border-colour;
+	border-radius: $default-border-radius;
+	padding: 1rem 1.5rem;
+	transition: border $speed $ease;
+	width: 100%;
+	-webkit-appearance: none;
+
+	&:focus {
+		border-color: $pri;
+	}
+
+	.is-valid & {
+		border-color: $success;
+	}
+
+	.is-invalid & {
+		border-color: $error;
+	}
+
+	.is-disabled & {
+		background: $disabled;
+		cursor: not-allowed;
+	}
+}
+
+textarea {
+	overflow: auto; // Hide scrollbar IE
+	resize: vertical;
+
+	.is-disabled & {
+		resize: none;
+	}
+}
+
+label {
+	display: block;
+	padding-bottom: 1rem;
+
+	.is-disabled & {
+		cursor: not-allowed;
+	}
+}
+
+label[for] {
+	cursor: pointer;
+
+	.is-disabled & {
+		cursor: not-allowed;
+	}
+}
+
+
+
+//= PLACEHOLDER ==============================================
+
+::-webkit-input-placeholder {
+   color: $form-placeholder-colour;
+   font-size: 1.4rem;
+}
+
+:-moz-placeholder { // Firefox 18-
+   color: $form-placeholder-colour;
+   font-size: 1.4rem;
+}
+
+::-moz-placeholder {  // Firefox 19+
+   color: $form-placeholder-colour;
+   font-size: 1.4rem;
+}
+
+:-ms-input-placeholder {
+   color: $form-placeholder-colour;
+   font-size: 1.4rem;
+}

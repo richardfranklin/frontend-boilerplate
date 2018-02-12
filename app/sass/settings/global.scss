@@ -18,6 +18,19 @@ $old-ie: 					false!default;
 
 $black:                     #1a171b;
 $white:                     #ffffff;
+$pri:                       #000000;
+$light-1:                   #e8e8e8;
+$light-2:                   darken($light-1, 10%);
+
+$dark-1:                    #262626;
+$dark-2:                    darken($dark-1, 10%);
+
+// Alert colours
+$red:                       #de2f34;
+$red-light:                 #ffeaea;
+$green:                     #3c763d;
+$orange:                    #F08626;
+$green-light:               #dff0d8;
 
 // Custom colours here
 // $light-1: #e8e8e8
@@ -61,12 +74,12 @@ $text-colour:				$black;
 $light-text-colour:         #6a686b;
 $light-text-colour-2:		#9d9ca0;
 $background-colour:			$white;
-$border-colour:				$light-2;
+$border-colour:				$pri;
 $border-style:              .4rem solid $pri;
 $link-colour:				$pri;
 $link-colour-hover:			darken($pri, 10);
-$form-placeholder-colour:	£dark-1;
-$placeholder-colour:		$light-1;
+$form-placeholder-colour:	$pri;
+$placeholder-colour:		$pri;
 $highlight-colour:			lighten( $pri, 20 );
 
 $error:						$red;

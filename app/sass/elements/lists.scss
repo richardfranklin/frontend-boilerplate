@@ -1,0 +1,22 @@
+/* ===========================================================
+
+	# Lists
+
+=========================================================== */
+
+li {
+	margin: $line-height / 4 3rem;
+
+	&:first-child {
+		margin-top: 0;
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	> ul,
+	> ol {
+		margin-top: $line-height / 4;
+	}
+}

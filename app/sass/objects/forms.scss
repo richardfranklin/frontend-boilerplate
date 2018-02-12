@@ -1,0 +1,522 @@
+/* ===========================================================
+
+    # Form
+
+=========================================================== */
+$line-height-half: $line-height / 2;
+
+.o-form__field-wrap {
+
+    & + & {
+        padding-top: 1.5rem;
+    }
+}
+
+.o-form__col {
+
+    & + & {
+        padding-top: 1.5rem;
+    }
+}
+
+.hidden {
+    + .o-form__field-wrap {
+        padding-top: 0 !important;
+    }
+}
+
+.o-form__navigation {
+    margin-top: 1.5rem;
+    text-align: left;
+}
+
+.o-form__field__group {
+
+    + .o-form__field__group {
+        margin-top: 2.5rem;
+    }
+
+    + .o-form__field-wrap {
+        margin-top: 1.5rem;
+    }
+}
+
+.o-form__col {
+
+    + .o-form__col {
+        padding-top: 1.5rem;
+    }
+}
+
+.o-form__title {
+    color: $pri;
+}
+
+.o-input,
+.o-select select,
+.o-textarea {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+        -ms-appearance: none;
+         -o-appearance: none;
+            appearance: none;
+}
+
+.o-validation {
+    display: none;
+    margin-top: $line-height / 4;
+
+    .is-valid & {
+        color: $success;
+        display: block;
+    }
+
+    .is-invalid & {
+        color: $error;
+        display: block;
+    }
+}
+
+.o-required {
+    color: $error;
+}
+
+.o-help {
+    color: $dark-1;
+    font-size: 1.3rem;
+}
+
+.field-validation-error {
+    color: $error;
+    display: block;
+    font-size: 1.2rem;
+    margin-top: $line-height / 4;
+}
+
+.validation-summary-errors {
+    background-color: lighten($error, 45);
+    border: .1rem solid transparent;
+    border-color: $error;
+    border-radius: .2rem;
+    color: $error;
+    font-size: 1.4rem;
+    margin-bottom: $line-height;
+    padding: 2rem;
+}
+
+.o-input {
+
+    &.input-validation-error {
+        background-color: lighten($error, 42);
+        border-color: $error;
+    }
+}
+
+select.input-validation-error {
+    background-color: lighten($error, 42);
+    border-color: $error;
+}
+
+.o-forgot-pass {
+	color:$dark-1;
+	font-size:1.4rem;
+	padding-top:.5rem;
+	display:block;
+}
+
+.o-form-divider {
+	margin:3rem 0;
+}
+
+
+//= LABEL ====================================================
+.o-label {
+	font-size: 1.6rem;
+	font-weight: normal;
+	padding-bottom: $line-height / 4;
+
+	+ .o-help {
+		display: block;
+		margin-bottom: 1rem;
+		margin-top: -1rem;
+	}
+}
+
+.o-label__note {
+    color: darken($light-1, 20);
+    display: block;
+    font-size: 1.2rem;
+    text-align: left;
+}
+
+.o-label__subnote {
+	font-size:1.3rem;
+	display:block;
+	padding-top:.2rem;
+	span {
+		color:$pri;
+		font-weight:bold;
+	}
+}
+
+.o-label--primary {
+	color:$pri;
+	font-weight:normal;
+}
+
+
+
+//= SELECT ===================================================
+
+.o-select {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjIuMyAyMi4zIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyMi4zIDIyLjM7IiB4bWw6c3BhY2U9InByZXNlcnZlIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPi5zdDB7ZmlsbDojQTdBOUFDO308L3N0eWxlPjxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTEuMSwxNS4yIDIuNSw2LjUgMC45LDguMSAxMS4xLDE4LjQgMjEuNCw4LjEgMTkuOCw2LjUgIi8+PC9zdmc+);
+    background-position: 97% 50%;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    position: relative;
+    vertical-align: middle;
+    z-index: 1;
+	&::-ms-expand {
+		display: none;
+	}
+
+    select {
+        position: relative;
+        text-indent: .01px;
+        text-overflow: '';
+        z-index: 1;
+
+        &::-ms-expand {
+            display: none;
+        }
+
+        .lt-ie10 & {
+            padding-right: 1rem;
+        }
+    }
+
+    &:after {
+        background: $background-colour;
+        border-radius: 0 $default-border-radius - $border-width $default-border-radius - $border-width 0;
+        box-sizing: border-box;
+        color: $border-colour;
+        content: '\25BE';
+        display: block;
+        height: calc( 100% - .2rem );
+        padding: 1rem 1.5rem;
+        pointer-events: none;
+        position: absolute;
+        right: $border-width;
+        top: $border-width;
+        z-index: 0;
+
+        .lt-ie10 & {
+            display: none;
+        }
+    }
+}
+
+// FireFox 30 hide native down arrow
+:-moz-any( .o-select ):after {
+    z-index: 1;
+}
+
+
+//= FIELDSET =================================================
+
+.o-fieldset__legend {
+    color: $pri;
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    padding-bottom: $line-height / 4;
+    width: 100%;
+
+    .o-label__note {
+        float: none;
+    }
+}
+
+.o-fieldset__list {
+    list-style: none;
+}
+
+.o-fieldset__item {
+    margin: 0;
+
+    .o-label {
+        font-weight: normal;
+    }
+
+    input {
+        margin: 0 .5rem 0 0;
+        width: auto;
+    }
+}
+
+.enhance {
+
+	.o-file {
+		height: .1rem;
+		opacity: 0;
+		overflow: hidden;
+		position: absolute;
+		width: .1rem;
+		z-index: -1;
+
+		+ .o-file__label {
+			background: $light-1;
+			box-shadow: inset 0 0 0 .2rem $border-colour;
+			cursor: pointer;
+			display: inline-block;
+			font-size: 1.25rem;
+			font-weight: 700;
+			min-height: 4.8rem;
+			overflow: hidden;
+			position: relative;
+			text-overflow: ellipsis;
+			transition: box-shadow $speed $ease;
+			vertical-align: middle;
+			white-space: nowrap;
+			width: 100%;
+
+			&:focus {
+				box-shadow: inset 0 0 0 .2rem $pri;
+			}
+
+			span {
+				bottom: 0;
+				color: $dark-1;
+				display: inline-block;
+				font-size: 1.4rem;
+				font-weight: 400;
+				height: 100%;
+				left: 0;
+				max-width: 31rem;
+				overflow: hidden;
+				padding: 1.3rem 1.5rem;
+				position: absolute;
+				text-overflow: ellipsis;
+				top: 0;
+				vertical-align: top;
+				white-space: nowrap;
+				width: 100%;
+			}
+
+			strong {
+				background-color: $dark-1;
+				bottom: 0;
+				color: $white;
+				display: inline-block;
+				font-weight: 400;
+				height: 100%;
+				padding: 1.2rem 2.5rem;
+				position: absolute;
+				right: 0;
+				text-transform: uppercase;
+				top: 0;
+			}
+		}
+	}
+
+	.o-checkbox,
+	.o-radio {
+		font-weight: normal;
+		padding: .8rem .4rem .4rem 3rem;
+		position: relative;
+
+        .o-checkbox__label,
+        .o-radio__label {
+            font-size: 1.5rem;
+        }
+
+		.o-checkbox__label:before,
+		.o-radio__label:before {
+			background: transparent;
+			border: $border-width solid $border-colour;
+			box-sizing: border-box;
+			content: '';
+			height: 1.8rem;
+			left: 0;
+			position: absolute;
+			top: $line-height-half;
+			transition: background-color $speed $ease, border-color $speed $ease;
+			width: 1.8rem;
+		}
+
+		.o-checkbox__label--white-selectable:before,
+		.o-radio__label--white-selectable:before {
+			background: $white;
+		}
+
+		.o-checkbox__label:after,
+		.o-radio__label:after {
+			background: transparent;
+			box-sizing: border-box;
+			content: '';
+			height: 1.8rem;
+			left: 0;
+			position: absolute;
+			top: $line-height-half;
+		}
+
+		.o-checkbox__input,
+		.o-radio__input {
+			display: none;
+
+			&:checked {
+
+				+ .o-checkbox__label:before, + .o-radio__label:before {
+					background-color: $pri;
+					border-color: $pri;
+				}
+
+				+ .o-checkbox__label:after, + .o-radio__label:after {
+					border-bottom: .3rem solid $white;
+					border-left: .3rem solid $white;
+					content: '';
+					height: .5rem;
+					left: .4rem;
+					position: absolute;
+					top: 1.6rem;
+					transform: rotateZ(-45deg);
+					width: 1rem;
+				}
+			}
+		}
+
+		.o-checkbox__label:before {
+			border-radius: $default-border-radius;
+		}
+
+		.o-radio__label:before {
+			border-radius: 50%;
+		}
+	}
+
+	.o-label--checkbox {
+
+		&:after {
+			border-radius: $default-border-radius;
+		}
+	}
+
+	.o-label--radio {
+
+		&:after {
+			border-radius: 100%;
+		}
+	}
+
+	.o-checkbox__label {
+		padding-bottom: 0;
+	}
+
+	.is-disabled {
+
+		.o-checkbox__label,
+		.o-radio__label {
+
+			&:before {
+				background-color: $disabled;
+			}
+		}
+	}
+}
+
+.c-checkbox-groups {
+    @include clearfix();
+}
+
+.c-checkbox-group {
+
+}
+
+.c-checkbox-group__title {
+    padding-bottom: 0;
+}
+
+
+@include respond-min($mq-small) {
+
+    .c-checkbox-group {
+        lost-column: 1/2 2;
+
+        margin-bottom: 2rem;
+    }
+
+    .o-checkbox__list--split {
+        @include clearfix();
+
+        .o-checkbox {
+			lost-column: 1/2 2;
+
+            margin-bottom: .5rem;
+        }
+    }
+
+}
+
+//= BUTTON ===================================================
+
+.o-input + .c-button,
+.o-select + .c-button,
+.o-textarea + .c-button {
+    margin-top: $line-height * 2;
+}
+
+@include respond-min($mq-small) {
+
+    .o-form__col {
+
+        &--6 {
+            lost-column: 1/2 2;
+
+            + .o-form__col {
+				padding-top: 0;
+			}
+			
+			&:nth-child(2n + 3) {
+				padding-top: 2rem;			
+			}
+
+			&:nth-child(2n + 4) {
+				padding-top: 2rem;			
+			}			
+		}
+		
+
+    }
+}
+
+@include respond-min($mq-medium) {
+
+    .validation-summary-errors {
+        margin-bottom: $line-height * 1.5;
+    }
+
+    .o-form__field-wrap {
+
+        & + & {
+            padding-top: 2rem;
+        }
+    }
+
+    .o-form__navigation {
+        margin-top: 2.5rem;
+        text-align: left;
+    }
+
+    .o-fieldset__legend {
+        font-size: 2.6rem;
+    }
+
+    .o-form__field__group {
+
+        + .o-form__field__group {
+            margin-top: 4rem;
+        }
+    }
+}

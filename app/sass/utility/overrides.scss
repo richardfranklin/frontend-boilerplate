@@ -1,0 +1,80 @@
+/* ===========================================================
+
+  # Overrides
+
+=========================================================== */
+
+.u-clearfix {
+	@include clearfix;
+}
+
+.u-hide-text,
+.u-visually-hidden {
+	@include hide-text;
+}
+
+.u-hidden {
+    display: none;
+}
+
+.u-visible {
+    visibility: visible;
+}
+
+.u-center-content,
+.u-center-text {
+	text-align: center;
+}
+
+.u-text--center,
+.u-content--center {
+    text-align: center;
+}
+
+.u-text--left,
+.u-content--left {
+    text-align: left;
+}
+
+.u-text--right
+.u-content--right {
+    text-align: right;
+}
+
+.u-strong {
+	font-weight: $bold;
+}
+
+.u-light {
+	font-weight: 300;
+}
+
+.u-highlight-text {
+	color: $pri;
+}
+
+.u-smaller-text {
+    font-size: 1rem;
+}
+
+.u-smaller-text-wrap {
+    + .u-smaller-text-wrap {
+        margin-top: .2rem;
+    }
+}
+
+.u-larger-text {
+    font-size: 1.8rem;
+}
+
+@include respond-min($mq-large) {
+
+    .u-smaller-text {
+        font-size: 1.1rem;
+    }
+
+    .u-larger-text {
+        font-size: 2rem;
+    }
+
+}

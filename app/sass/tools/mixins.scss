@@ -1,0 +1,82 @@
+/* ===========================================================
+
+    # Mixins
+
+=========================================================== */
+
+@mixin heading-font-size($font-size) {
+    font-size: $font-size;
+    padding-bottom: $font-size / 1.5;
+}
+
+
+@mixin card-hover() {
+    transition: box-shadow .3s ease-out, transform .3s ease-out;
+
+    &:hover {
+        box-shadow: rgba(45,45,45,.05) 0 .2rem .2rem,
+        rgba(49,49,49,.05) 0 .4rem .4rem,
+        rgba(42,42,42,.05) 0 .8rem .8rem,
+        rgba(32,32,32,.015) 0 .8rem .9rem;
+
+        transform: translate(0, -.3rem);
+    }
+}
+
+@mixin old-ie() {
+    @if $old-ie {
+        @content;
+    }
+}
+
+@mixin respond-min($width) {
+    @media only screen and (min-width: $width) {
+        @content;
+    }
+}
+
+@mixin respond-max($width) {
+    @media only screen and (max-width: $width - 1px) {
+        @content;
+    }
+}
+
+@mixin respond-min-max($min, $max) {
+    @media only screen and (min-width: $min) and ( max-width: $max - 1px ) {
+        @content;
+    }
+}
+
+@mixin hi-res() {
+    @media (-webkit-min-device-pixel-ratio: 1.5) , ( min-resolution: 144dppx ) {
+        @content;
+    }
+}
+
+@mixin clearfix() {
+
+    &:before,
+    &:after {
+        content: '';
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+@mixin pad-top($width, $height) {
+    padding-top: ($height / $width) * 100%;
+}
+
+@mixin hide-text {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
